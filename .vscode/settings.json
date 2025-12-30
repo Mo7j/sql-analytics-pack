@@ -10,6 +10,17 @@
             "username": "postgres",
             "password": "Hj0561289183!",
             "name": "analytics_db_local"
+        },
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "parch_local",
+            "database": "parch",
+            "username": "postgres",
+            "password": "Hj0561289183!"
         }
     ]
 }
