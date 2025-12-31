@@ -96,7 +96,7 @@ JOIN region r
 WHERE o.standard_qty > 100 AND poster_qty > 50
 ORDER BY unit_price DESC;
 -- 11. What are the different channels used by account id 1001? Your final table should have only 2 columns: account name and the different channels. You can try SELECT DISTINCT to narrow down the results to only the unique values.
-SELECT DISTINCT a.name name, w.channel channel
+SELECT DISTINCT a.name name, w.channel channel -- NOTE: DISTINCT is used to get unique channel values
 FROM accounts a
 JOIN web_events w
     ON a.id = w.account_id
@@ -107,3 +107,15 @@ FROM orders o
 LEFT JOIN accounts a
     ON o.account_id = a.id
 WHERE o.occurred_at BETWEEN '01-01-2015' AND '12-31-2015';
+
+-- LEFT & RIGHT JOIN --
+SELECT a.name account_name, w.channel channel
+FROM accounts a
+LEFT JOIN web_events w
+ON a.id = w.account_id;
+-- This query selects all account names from the accounts table and their associated web event channels, if any. Accounts without web events will still be included with NULL in the channel column.
+SELECT w.channel channel, a.name account_name
+FROM web_events w
+RIGHT JOIN accounts a
+ON w.account_id = a.id;
+-- This query selects all account names from the accounts table and their associated web event channels, if any. Accounts without web events will still be included with NULL in the channel column.
